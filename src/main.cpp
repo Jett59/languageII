@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include "compiler.h"
+#include "interpreter.h"
 
 using std::cerr;
 using std::cout;
@@ -31,7 +32,8 @@ int main (int argc, char** argv) {
           action = Action::INTERPRET;
           inputFileName = arg;
         }else {
-          cerr << "Unknown file type for " << arg;
+          cerr << "Unknown file type for " << arg << endl;
+          ;
         }
     }
   }
@@ -41,7 +43,7 @@ int main (int argc, char** argv) {
   }
   ifstream input(inputFileName, ios::binary);
   if (action == Action::INTERPRET) {
-    cerr << "Error: interpretation is not currently supported" << endl;
+    interpret(input);
   }else {
       if (outputFileName == "") {
           outputFileName = inputFileName + ".lli";

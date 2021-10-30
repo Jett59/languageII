@@ -3,6 +3,6 @@
 
 #include <fstream>
 
-void interpret(std::ifstream input);
+void interpret(std::ifstream& input);
 
 #endif
