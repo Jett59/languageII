@@ -11,21 +11,20 @@ void compile(ifstream& input, ofstream& output) {
 while (true) {
   char outByte = 0;
   for (int i = 0; i < 8; i ++) {
-      input >> c;
-  if (input.eof()) {
-    break;
-  }
-  while (c != 'I' && c != 'l') {
+  do {
       input >> c;
       if (input.eof()) {
         break;
       }
-    }
+  } while (c == ' ' || c == '\t' || c == '\n');
     if (input.eof()) {
       break;
     }
   if (c == 'l') {
     outByte |= 1 << (7 - i);
+  }else if (c != 'I') {
+    cerr << "Error: Unknown character " << c << endl;
+    return;
   }
   }
   output << outByte;
