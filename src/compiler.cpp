@@ -15,10 +15,17 @@ while (true) {
   if (input.eof()) {
     break;
   }
+  while (c != 'I' && c != 'l') {
+      input >> c;
+      if (input.eof()) {
+        break;
+      }
+    }
+    if (input.eof()) {
+      break;
+    }
   if (c == 'l') {
     outByte |= 1 << (7 - i);
-  }else if (c != 'I') {
-    cerr << "Skipping unknown character " << c << endl;
   }
   }
   output << outByte;
